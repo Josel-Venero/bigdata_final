@@ -1,0 +1,9 @@
+{
+	"name": "jvenero-datafact01",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "74e303d4-ee29-43b6-b4d7-47b95acc7833",
+		"tenantId": "866d1113-d184-4111-9fa8-e324e8567414"
+	}
+}

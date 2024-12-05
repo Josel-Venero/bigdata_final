@@ -1,0 +1,26 @@
+{
+	"name": "Exec_Pipelines",
+	"properties": {
+		"description": "Programación de ejecución automática de los pipelines",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "Ejecutar todo",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2024-12-04T02:45:00",
+				"endTime": "2024-12-31T04:00:00",
+				"timeZone": "SA Pacific Standard Time"
+			}
+		}
+	}
+}

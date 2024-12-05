@@ -1,6 +1,72 @@
 {
 	"name": "Ejecutar todo",
 	"properties": {
+		"description": "Ejecutar desde la ingestión de datos hasta la capa oro",
+		"activities": [
+			{
+				"name": "Ext_Ingesta_datos",
+				"description": "Ejecutar ingesta de datos desde la capa bronce",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "copy_input_bronce",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Load_CapaBronce_CapaPlata",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Ext_Ingesta_datos",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "capabronce_capaplata",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Transf_CapaPlata_CapaOro",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Load_CapaBronce_CapaPlata",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "capaplata_capaoro",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
 		"annotations": []
 	}
 }

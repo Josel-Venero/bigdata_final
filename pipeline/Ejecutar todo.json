@@ -1,7 +1,7 @@
 {
 	"name": "Ejecutar todo",
 	"properties": {
-		"description": "Ejecutar desde la ingestión de datos hasta la capa oro",
+		"description": "Ejecutar desde la ingestión de datos hasta la transformación en capa oro",
 		"activities": [
 			{
 				"name": "Ext_Ingesta_datos",
